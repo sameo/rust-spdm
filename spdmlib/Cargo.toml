@@ -16,8 +16,8 @@ log = "0.4.13"
 bytes = { version="1", default-features=false }
 conquer-once = { version = "0.3.2", default-features = false }
 
-ring = { git="https://github.com/jyao1/ring", branch="uefi_support",  optional = true }
-webpki = { git="https://github.com/jyao1/webpki", branch="uefi_support", default-features = false, features = ["alloc"], optional = true}
+ring = { git="https://github.com/sameo/ring", branch="topic/riscv",  optional = true }
+webpki = { git="https://github.com/sameo/webpki", branch="topic/riscv", default-features = false, features = ["alloc"], optional = true}
 untrusted = { version = "0.7.1", optional = true }
 zeroize = { version = "1.5.0", features = ["zeroize_derive"]}
 

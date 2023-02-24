@@ -8,8 +8,8 @@ edition = "2018"
 
 [dependencies]
 log = "0.4.13"
-ring = { git = "https://github.com/jyao1/ring", branch = "uefi_support" }
-webpki = { git = "https://github.com/jyao1/webpki", branch = "uefi_support", default-features = false, features = [
+ring = { git = "https://github.com/sameo/ring", branch = "topic/riscv" }
+webpki = { git = "https://github.com/sameo/webpki", branch = "topic/riscv", default-features = false, features = [
     "alloc",
 ] }
 untrusted = { version = "0.7.1" }
