@@ -106,10 +106,9 @@ fn sign_ecdsa_asym_algo(
     let der_file = std::fs::read(key_file_path).expect("unable to read key der!");
     let key_bytes = der_file.as_slice();
 
-    let key_pair: ring::signature::EcdsaKeyPair =
-        ring::signature::EcdsaKeyPair::from_pkcs8(algorithm, key_bytes).ok()?;
-
     let rng = ring::rand::SystemRandom::new();
+    let key_pair: ring::signature::EcdsaKeyPair =
+        ring::signature::EcdsaKeyPair::from_pkcs8(algorithm, key_bytes, &rng).ok()?;
 
     let signature = key_pair.sign(&rng, data).ok()?;
     let signature = signature.as_ref();

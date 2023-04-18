@@ -44,13 +44,11 @@ impl SpdmDheKeyExchange for SpdmDheKeyExchangeP256 {
         match ring::agreement::agree_ephemeral(
             self.0,
             &peer_public_key,
-            ring::error::Unspecified,
             |key_material| {
                 final_key.extend_from_slice(key_material);
-                Ok(())
             },
         ) {
-            Ok(()) => Some(SpdmDheFinalKeyStruct::from(final_key)),
+            Ok(_) => Some(SpdmDheFinalKeyStruct::from(final_key)),
             Err(_) => None,
         }
     }
@@ -88,13 +86,11 @@ impl SpdmDheKeyExchange for SpdmDheKeyExchangeP384 {
         match ring::agreement::agree_ephemeral(
             self.0,
             &peer_public_key,
-            ring::error::Unspecified,
             |key_material| {
                 final_key.extend_from_slice(key_material);
-                Ok(())
             },
         ) {
-            Ok(()) => Some(SpdmDheFinalKeyStruct::from(final_key)),
+            Ok(_) => Some(SpdmDheFinalKeyStruct::from(final_key)),
             Err(_) => None,
         }
     }

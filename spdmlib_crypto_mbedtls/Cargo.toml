@@ -14,7 +14,7 @@ spin = "0.9.8"
 cc = { version = "1.0.63", default-features = false }
 
 [dev-dependencies]
-ring = { git="https://github.com/jyao1/ring", branch="uefi_support" }
+ring = { git="https://github.com/sameo/ring", branch="topic/riscv-0.17" }
 log = { version = "0.4.13" }
 
 [features]

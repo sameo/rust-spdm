@@ -59,14 +59,9 @@ fn verify_cert_chain(cert_chain: &[u8]) -> SpdmResult {
 
     let mut certs = Vec::new();
     loop {
-        let start = reader.mark();
-        match der::expect_tag_and_get_value(reader, der::Tag::Sequence) {
-            Ok(_) => {
-                let end = reader.mark();
-                let cert = reader
-                    .get_input_between_marks(start, end)
-                    .map_err(|_| SPDM_STATUS_INVALID_CERT)?;
-                certs.push(cert.as_slice_less_safe())
+        match reader.read_partial(der::read_sequence_and_get_value) {
+            Ok(cert) => {
+                certs.push(cert.0.as_slice_less_safe())
             }
             Err(_) => break,
         }

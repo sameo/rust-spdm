@@ -22,7 +22,7 @@ fn hkdf_expand(
         _ => return None,
     }?;
 
-    if pk.len() != algo.hmac_algorithm().digest_algorithm().output_len {
+    if pk.len() != algo.hmac_algorithm().digest_algorithm().output_len() {
         return None;
     }
 
